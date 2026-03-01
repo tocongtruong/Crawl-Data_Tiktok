@@ -76,9 +76,8 @@ swagger_template = {
             "name": "TikTok Scraping API",
         },
     },
-    "host": "localhost:5000",
     "basePath": "/",
-    "schemes": ["http"],
+    "schemes": ["https", "http"],
     "tags": [
         {
             "name": "Xu hướng (Trending)",
@@ -221,11 +220,14 @@ atexit.register(cleanup)
 # ============================================================
 # Main
 # ============================================================
+# Khởi tạo browser khi import (cho cả gunicorn lẫn chạy trực tiếp)
+init_browser()
+
 if __name__ == "__main__":
-    init_browser()
+    port = int(os.environ.get("PORT", 5000))
     logger.info("=" * 60)
     logger.info("TikTok Scraping API đang chạy!")
-    logger.info("Swagger UI: http://localhost:5000/apidocs/")
-    logger.info("Health check: http://localhost:5000/health")
+    logger.info(f"Swagger UI: http://localhost:{port}/apidocs/")
+    logger.info(f"Health check: http://localhost:{port}/health")
     logger.info("=" * 60)
-    app.run(host="0.0.0.0", port=5000, debug=False)
+    app.run(host="0.0.0.0", port=port, debug=False)
