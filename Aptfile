@@ -20,3 +20,15 @@ libpango-1.0-0
 libcairo2
 libasound2
 libfontconfig1
+libgtk-3-0
+libgdk-pixbuf-2.0-0
+libpangocairo-1.0-0
+libcairo-gobject2
+libgraphite2-3
+libharfbuzz0b
+libxcursor1
+libxi6
+libxtst6
+libxss1
+fonts-liberation
+xfonts-base

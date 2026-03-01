@@ -1,1 +1,1 @@
-web: cd flask_app && playwright install chromium && gunicorn app:app --bind 0.0.0.0:$PORT --timeout 120 --workers 1 --threads 4
+web: export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/app/.apt/usr/lib/x86_64-linux-gnu:/app/.apt/lib/x86_64-linux-gnu" && cd flask_app && playwright install chromium && gunicorn app:app --bind 0.0.0.0:$PORT --timeout 120 --workers 1 --threads 4
