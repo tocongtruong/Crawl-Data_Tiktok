@@ -221,7 +221,11 @@ atexit.register(cleanup)
 # Main
 # ============================================================
 # Khởi tạo browser khi import (cho cả gunicorn lẫn chạy trực tiếp)
-init_browser()
+try:
+    init_browser()
+except Exception as e:
+    logger.error(f"Không thể khởi tạo Playwright browser: {e}")
+    logger.error("Server sẽ chạy nhưng các API scraping sẽ không hoạt động cho đến khi browser được khởi tạo lại.")
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
